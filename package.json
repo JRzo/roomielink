@@ -1,0 +1,35 @@
+{
+  "name": "roomielink",
+  "version": "1.0.0",
+  "description": "RoomieLink is the platform designed to connect professionals looking for roommates, specifically tailored for those who work in the same company or vicinity. Say goodbye to long commutes and hello to shared living with colleagues!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRzo/roomielink.git"
+  },
+  "author": "Julio R",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JRzo/roomielink/issues"
+  },
+  "homepage": "https://github.com/JRzo/roomielink#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "flash": "^1.1.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0"
+  }
+}
