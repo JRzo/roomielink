@@ -16,26 +16,31 @@ let configDB = require("./config/database.js");
 let db;
 
 // Middleware
-app.set("view engine",'ejs')
-app.use(morgan('dev')); // log every request to the console
+app.set("view engine","ejs")
+app.use(morgan("dev")); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("./public"))
 
-MongoClient.connect(configDB.url)
-    .then(client => {
-        db = client.db(configDB.dbName);
-        console.log('Connected to database');
-        require('./app/routes.js')(app, passport, db)
-        app.listen(port, () => {
-            console.log('Server is running on port 5000');
-        });
-    })
-    .catch(err => console.error(err));
+// MongoClient.connect(configDB.url)
+//     .then(client => {
+//         db = client.db(configDB.dbName);
+//         console.log('Connected to database');
+//         require('./app/routes.js')(app, passport, db)
+//         app.listen(port, () => {
+//             console.log('Server is running on port 5000');
+//         });
+//     })
+//     .catch(err => console.error(err));
+mongoose.connect(configDB.url, (err, database) => {
+    if (err) return console.log(err)
+    db = database
+    require("./app/routes.js")(app, passport, db);
+  }); // connect to our database
+  
 
-
-require('./config/passport.js')(passport)
+require('./config/passport')(passport)
 
 // require for passport
 
@@ -46,5 +51,8 @@ app.use(session({
 }))
 
 app.use(passport.initialize()); //persistent login sessions
+app.use(passport.session()); // persistent login sessions
 app.use(flash()); //use connect-flash for flash messages stored in session
 
+app.listen(port);
+console.log('The magic happens on port ' + port);

@@ -6,7 +6,7 @@ module.exports = (app, passport, db) =>{
     // Profile
         // PROFILE SECTION =========================
         app.get('/profile', isLoggedIn, function(req, res) {
-            db.collection('messages').find().toArray((err, result) => {
+            db.collection('Users').find().toArray((err, result) => {
               if (err) return console.log(err)
               res.render('profile.ejs', {
                 user : req.user,
@@ -22,7 +22,7 @@ module.exports = (app, passport, db) =>{
         // LOGIN ===============================
         // show the login form
         app.get('/login', function(req, res) {
-            res.render('login.ejs', { message: req.flash('loginMessage') });
+            res.render('index.ejs', { message: req.flash('loginMessage') });
         });
 
         // process the login form
@@ -35,7 +35,7 @@ module.exports = (app, passport, db) =>{
         // SIGNUP =================================
         // show the signup form
         app.get('/signup', function(req, res) {
-            res.render('signup.ejs', { message: req.flash('signupMessage') });
+            res.render('index.ejs', { message: req.flash('signupMessage') });
         });
 
         // process the signup form
