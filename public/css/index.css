@@ -90,14 +90,18 @@ body{
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
-    height: 50%;
+    height: 80%;
     list-style: none;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
 }
 
 .div2 ul li:hover{
-    background: #a30101;
+    background: #a30101;;
 }
-.div2 ul li a:hover{
+
+.div2 ul li a:hover, .div2 ul li i:hover{
     color:white
 }
 
@@ -106,8 +110,43 @@ body{
     background: #e20004b7;
     margin: 0px;
     padding: 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+/* Profile Matches */
+.div3 .filter{
+    width: 100%;
+    margin: 0px;
+    height: 10%;
+    border: 1px solid orange;
+}
+.div3 div{
+    display: flex;
+    flex-flow: row wrap ;
+    justify-content: center;
+}
+
+.div3 div img{
+    width: 50%;
+    margin: auto;
+}
+.div3 .card{
+    width: 100%;
+    height: 70%;
+    border: 1px solid white;
+    text-align: center;
 }
 
 
+/* Button */
+.div3 button{
+    position: relative;
+    top: 2.8em;
+    left: 4.5em;
+    width: 50%;
+    height: 10%;
+}
 /* Animations */
 

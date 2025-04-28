@@ -5,15 +5,22 @@ module.exports = (app, passport, db) =>{
 
     // Profile
         // PROFILE SECTION =========================
-        app.get('/profile', isLoggedIn, function(req, res) {
-            db.collection('Users').find().toArray((err, result) => {
-              if (err) return console.log(err)
-              res.render('profile.ejs', {
-                user : req.user,
-                messages: result
-              })
+    app.get('/profile', isLoggedIn, function(req, res) {
+        db.collection('Users').find().toArray((err, result) => {
+            if (err) return console.log(err)
+            res.render('profile.ejs', {
+            user : req.user,
+            messages: result
             })
-        });
+        })
+    });
+
+
+        // Settings
+
+    app.get('/profile/settings', (req, res) =>{
+        res.render('settings.ejs')
+    })
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
 // =============================================================================
