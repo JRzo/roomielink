@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JRzo/roomielink#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "express": "^5.1.0",

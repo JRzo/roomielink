@@ -1,49 +1,44 @@
-// Setting up the user to be able to login
+// load the things we need
+var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
 
-let mongoose = require("mongoose");
-// Is a cryptographic hashing function primarly used for securely storing password.
-let bcrypt = require("bcrypt");
+// define the schema for our user model
+var userSchema = mongoose.Schema({
 
-// Each schema maps to a mongoDB colleciton and defines the shape of the documents (the format)
-let userShema = mongoose.Schema({
-    local: {
-        email: String,
-        password: String
+    local            : {
+        email        : String,
+        password     : String
     },
-
-    facebook: {
-        id: String,
-        token: String,
-        name: String,
-        email: String
+    facebook         : {
+        id           : String,
+        token        : String,
+        name         : String,
+        email        : String
     },
-    twitter: {
-        id: String,
-        token: String,
-        name: String,
-        email: String
+    twitter          : {
+        id           : String,
+        token        : String,
+        displayName  : String,
+        username     : String
     },
-    google:{
-        id: String,
-        token: String,
-        name: String,
-        email: String
+    google           : {
+        id           : String,
+        token        : String,
+        email        : String,
+        name         : String
     }
-})
 
-// Generating a hash
+});
 
-userShema.methods.generateHash = (password) =>{
-    // HashSync generates a hjas for the given password
+// generating a hash
+userSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-}
+};
 
-// Checking if the password is valid
-userShema.methods.validPassword = (password) =>{
-    // Syncronously tests a password against a hash.
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.local.password);
-}
+};
 
-
-// Exporting the model of the users to expose it to our apps
-module.exports = mongoose.model("User", userShema);
+// create the model for users and expose it to our app
+module.exports = mongoose.model('User', userSchema);
