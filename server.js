@@ -16,7 +16,8 @@ let configDB = require("./config/database.js");
 let db;
 
 // Middleware
-app.set("view engine","ejs")
+app.set('views', path.join(__dirname, 'views')); // Assuming your views folder is in the same directory as your server file
+app.set("view engine", "ejs");
 app.use(morgan("dev")); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
