@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const MongoClient = require("mongodb").MongoClient;
 const passport = require("passport");
 const cookieParser = require("cookie-parser");
+const path = require('path');
 const bodyParser = require("body-parser");
 // To create a session middleware with the given options
 const session = require("express-session");
@@ -24,16 +25,6 @@ app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("./public"))
 
-// MongoClient.connect(configDB.url)
-//     .then(client => {
-//         db = client.db(configDB.dbName);
-//         console.log('Connected to database');
-//         require('./app/routes.js')(app, passport, db)
-//         app.listen(port, () => {
-//             console.log('Server is running on port 5000');
-//         });
-//     })
-//     .catch(err => console.error(err));
 mongoose.connect(configDB.url, (err, database) => {
     if (err) return console.log(err)
     db = database
