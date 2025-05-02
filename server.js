@@ -17,13 +17,13 @@ let configDB = require("./config/database.js");
 let db;
 
 // Middleware
-app.set('views', path.join(__dirname, 'views')); // Assuming your views folder is in the same directory as your server file
+app.set('views', path.join(__dirname, 'views')); 
 app.set("view engine", "ejs");
 app.use(morgan("dev")); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("./public"))
+app.use(express.static("public"))
 
 mongoose.connect(configDB.url, (err, database) => {
     if (err) return console.log(err)
