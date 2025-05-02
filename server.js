@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 // To create a session middleware with the given options
 const session = require("express-session");
 let flash = require('flash')
-let port = 5000;
+const port = process.env.PORT || 5000;
 
 
 let configDB = require("./config/database.js");
